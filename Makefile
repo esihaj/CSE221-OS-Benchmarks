@@ -18,4 +18,7 @@ clean:
 
 syscall: syscall.cpp $(NANO_OBJ)
 	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o syscall.cpp -o syscall.out 
+
+thread: thread.cpp $(NANO_OBJ)
+	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o thread.cpp -o thread.out 
 	
