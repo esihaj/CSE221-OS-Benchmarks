@@ -1,0 +1,51 @@
+pow size: 4, access time: 683732 per elem: 0.683732 ns. Total Access Count: 1000000. garbage: 0
+
+pow size: 5, access time: 680731 per elem: 0.680731 ns. Total Access Count: 1000000. garbage: 1
+
+pow size: 6, access time: 569782 per elem: 0.569782 ns. Total Access Count: 1000000. garbage: 3
+
+pow size: 7, access time: 575210 per elem: 0.57521 ns. Total Access Count: 1000000. garbage: 6
+
+pow size: 8, access time: 578176 per elem: 0.578176 ns. Total Access Count: 1000000. garbage: 12
+
+pow size: 9, access time: 729563 per elem: 0.729563 ns. Total Access Count: 1000000. garbage: 25
+
+pow size: 10, access time: 602132 per elem: 0.602132 ns. Total Access Count: 1000000. garbage: 51
+
+pow size: 11, access time: 569353 per elem: 0.569353 ns. Total Access Count: 1000000. garbage: 102
+
+pow size: 12, access time: 570045 per elem: 0.570045 ns. Total Access Count: 1000000. garbage: 204
+
+pow size: 13, access time: 547128 per elem: 0.547128 ns. Total Access Count: 1000000. garbage: -19
+
+pow size: 14, access time: 601820 per elem: 0.60182 ns. Total Access Count: 1000000. garbage: -39
+
+pow size: 15, access time: 555255 per elem: 0.555255 ns. Total Access Count: 1000000. garbage: -79
+
+pow size: 16, access time: 582420 per elem: 0.58242 ns. Total Access Count: 1000000. garbage: -159
+
+pow size: 17, access time: 738470 per elem: 0.73847 ns. Total Access Count: 1000000. garbage: 110
+
+pow size: 18, access time: 1170588 per elem: 1.17059 ns. Total Access Count: 1000000. garbage: -205
+
+pow size: 19, access time: 1843903 per elem: 1.8439 ns. Total Access Count: 1000000. garbage: 15
+
+pow size: 20, access time: 2368377 per elem: 2.36838 ns. Total Access Count: 1000000. garbage: 30
+
+pow size: 21, access time: 3363064 per elem: 3.36306 ns. Total Access Count: 1000000. garbage: 110
+
+pow size: 22, access time: 6424191 per elem: 6.42419 ns. Total Access Count: 1000000. garbage: 79
+
+pow size: 23, access time: 8372809 per elem: 8.37281 ns. Total Access Count: 1000000. garbage: -140
+
+pow size: 24, access time: 9450048 per elem: 9.45005 ns. Total Access Count: 1000000. garbage: 43
+
+pow size: 25, access time: 11479221 per elem: 11.4792 ns. Total Access Count: 1000000. garbage: 101
+
+pow size: 26, access time: 12737321 per elem: 12.7373 ns. Total Access Count: 1000000. garbage: -145
+
+pow size: 27, access time: 15938375 per elem: 15.9384 ns. Total Access Count: 1000000. garbage: 91
+
+pow size: 28, access time: 18711347 per elem: 18.7113 ns. Total Access Count: 1000000. garbage: -2
+
+pow size: 29, access time: 20857445 per elem: 20.8574 ns. Total Access Count: 1000000. garbage: -34
