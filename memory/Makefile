@@ -13,6 +13,9 @@ random-access.out: latency/random-access.cpp
 linked-list.out: latency/linked-list.cpp
 	$(CC) $(FLAGS) latency/linked-list.cpp -o linked-list.out
 
+memcopy.out: bandwidth/memcopy.cpp
+	$(CC) $(FLAGS) bandwidth/memcopy.cpp -o memcopy.out
+
 
 clean:
 	rm -f $(OBJS) $(OUT)
