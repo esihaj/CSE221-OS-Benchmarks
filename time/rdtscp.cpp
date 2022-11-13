@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include <cstdint>
+#include <thread>
+#include <chrono>
+
 using namespace std;
 
 inline int func(long count)
@@ -9,6 +12,11 @@ inline int func(long count)
     for (long i = 0; i < count; i++)
         sum += i;
     return sum;
+}
+
+inline int sleep() {
+    std::this_thread::sleep_for (std::chrono::seconds(1));
+    return 1;
 }
 
 // typedef unsigned long long uint64_t;
