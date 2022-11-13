@@ -15,7 +15,7 @@ inline int func(long count)
 }
 
 inline int sleep(long count) {
-    std::this_thread::sleep_for (std::chrono::seconds(1));
+    std::this_thread::sleep_for (std::chrono::milliseconds(1));
     return 1;
 }
 
@@ -39,7 +39,9 @@ void measure_cycles(long count)
     start = (((uint64_t)cycles_high << 32) | cycles_low);
     end = (((uint64_t)cycles_high1 << 32) | cycles_low1);
 
-    cout << count << " time " << (end - start) / (double)count << " gc" << sum << "\n";
+    auto duration = (end - start);
+    cout << count << " raw time " << duration;
+    cout << " per element time: " <<  duration / (double)count << " gc" << sum << "\n";
 }
 
 int main()
