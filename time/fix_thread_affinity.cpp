@@ -1,5 +1,7 @@
 #include <sched.h>
 #include <pthread.h>
+#include <cerrno>
+#include <cassert>
 
 /**
  * pin the current thread 
