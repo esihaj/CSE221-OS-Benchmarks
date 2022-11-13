@@ -4,7 +4,7 @@
 /**
  * pin the current thread 
  */
-void fix() {
+void fix_thread() {
     cpu_set_t   *cpuset( nullptr );
     size_t cpu_allocate_size( -1 );
 #if   (__GLIBC_MINOR__ > 9 ) && (__GLIBC__ == 2 )

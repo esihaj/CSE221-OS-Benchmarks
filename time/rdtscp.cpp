@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <cstdint>
+#include "fix_thread_affinity.cpp"
 using namespace std;
 
 inline int func(long count)
@@ -36,6 +37,7 @@ void measure_cycles(long count)
 
 int main()
 {
+    fix_thread();
     for (long i = 1; i < 1'000'000'000; i *= 10)
         measure_cycles(i);
 }
