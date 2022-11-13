@@ -2,6 +2,7 @@
 #include <pthread.h>
 #include <cerrno>
 #include <cassert>
+#include <cstdint>
 
 /**
  * pin the current thread 
