@@ -14,7 +14,7 @@ inline int func(long count)
     return sum;
 }
 
-inline int sleep(long count) {
+inline void sleep() {
     std::this_thread::sleep_for (std::chrono::milliseconds(1));
     return 1;
 }
@@ -29,7 +29,7 @@ void measure_cycles(long count)
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
                  : "=r"(cycles_high), "=r"(cycles_low)::"%rax", "%rbx", "%rcx", "%rdx");
-    auto sum = sleep(count);
+    sleep();
     asm volatile("RDTSCP\n\t"
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
@@ -40,12 +40,12 @@ void measure_cycles(long count)
     end = (((uint64_t)cycles_high1 << 32) | cycles_low1);
 
     auto duration = (end - start);
-    cout << count << " raw time " << duration;
-    cout << " per element time: " <<  duration / (double)count << " gc" << sum << "\n";
+    cout << count << " raw time " << duration << "\n";
+    // cout << " per element time: " <<  duration / (double)count << " gc" << sum << "\n";
 }
 
 int main()
 {
-    for (long i = 1; i < 1'000'000'000; i *= 10)
+    for (long i = 1; i < 50; i++)
         measure_cycles(i);
 }
