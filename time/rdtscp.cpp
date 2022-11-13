@@ -14,7 +14,7 @@ inline int func(long count)
     return sum;
 }
 
-inline int sleep() {
+inline int sleep(long count) {
     std::this_thread::sleep_for (std::chrono::seconds(1));
     return 1;
 }
@@ -29,7 +29,7 @@ void measure_cycles(long count)
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
                  : "=r"(cycles_high), "=r"(cycles_low)::"%rax", "%rbx", "%rcx", "%rdx");
-    auto sum = func(count);
+    auto sum = sleep(count);
     asm volatile("RDTSCP\n\t"
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
