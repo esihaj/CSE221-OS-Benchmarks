@@ -16,7 +16,6 @@ inline int func(long count)
 
 inline void sleep() {
     std::this_thread::sleep_for (std::chrono::milliseconds(1));
-    return 1;
 }
 
 // typedef unsigned long long uint64_t;
