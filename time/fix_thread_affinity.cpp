@@ -3,6 +3,7 @@
 #include <cerrno>
 #include <cassert>
 #include <cstdint>
+#include <cstdio>
 
 /**
  * pin the current thread 
