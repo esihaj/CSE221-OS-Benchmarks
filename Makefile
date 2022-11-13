@@ -2,7 +2,7 @@ OBJS	= nanobench.o
 HEADER	= nano/nanobench.h
 OUT	= *.out
 CC	 = clang++
-FLAGS	 = -O0 -g -Wall -std=c++17
+FLAGS	 = -O0 -g -Wall -std=gnu++17
 LFLAGS	 = 
 
 NANO_FLAGS = -I./nanobench/
@@ -21,4 +21,7 @@ syscall: syscall.cpp $(NANO_OBJ)
 
 thread: thread.cpp $(NANO_OBJ)
 	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o thread.cpp -o thread.out 
+
+context-switch: context-switch.cpp $(NANO_OBJ)
+	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out 
 	
