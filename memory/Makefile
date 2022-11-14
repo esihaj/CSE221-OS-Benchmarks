@@ -1,7 +1,7 @@
 OBJS	= nanobench.o
 OUT	= *.out
-CC	 = clang++
-FLAGS	 = -O3 -g -Wall -std=gnu++20
+CC	 = g++
+FLAGS	 = -O3 -g -Wall -std=gnu++2a
 LFLAGS	 = 
 
 # all: $(OBJS)
