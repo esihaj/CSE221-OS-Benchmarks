@@ -3,8 +3,11 @@
 #include <cstdint>
 #include <thread>
 #include <chrono>
+#include <random>
 
 using namespace std;
+
+int a;
 
 inline int func(long count)
 {
@@ -18,7 +21,10 @@ inline void sleep() {
     std::this_thread::sleep_for (std::chrono::milliseconds(1));
 }
 
-// typedef unsigned long long uint64_t;
+inline int get_a(int count) {
+    return a;
+} 
+
 void measure_cycles(long count)
 {
     unsigned long long start, end;
@@ -28,7 +34,7 @@ void measure_cycles(long count)
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
                  : "=r"(cycles_high), "=r"(cycles_low)::"%rax", "%rbx", "%rcx", "%rdx");
-    sleep();
+    auto sum = get_a(count);
     asm volatile("RDTSCP\n\t"
                  "mov %%edx, %0\n\t"
                  "mov %%eax, %1\n\t"
@@ -39,12 +45,13 @@ void measure_cycles(long count)
     end = (((uint64_t)cycles_high1 << 32) | cycles_low1);
 
     auto duration = (end - start);
-    cout << count << " raw time " << duration << "\n";
+    cout << count << " raw time " << duration << "res " << sum << "\n";
     // cout << " per element time: " <<  duration / (double)count << " gc" << sum << "\n";
 }
 
 int main()
 {
+    a = std::rand();
     for (long i = 1; i < 50; i++)
         measure_cycles(i);
 }
