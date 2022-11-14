@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <cassert>
+#include <cstring>
 
 using namespace std;
 
