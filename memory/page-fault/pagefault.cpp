@@ -26,7 +26,7 @@ int main() {
 
     for(int i = 0; i < ACCESS_COUNT; i++) {
         size_t index_page = rand() % SIZE;
-        cout << "accessing page " << index_page << endl;
+        // cout << "accessing page " << index_page << endl;
         counter += buffer[index_page * 4096];    
     };
 
