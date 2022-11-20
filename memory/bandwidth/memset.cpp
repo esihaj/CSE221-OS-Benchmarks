@@ -26,6 +26,7 @@ public:
     {
         src = new DATA_TYPE[size];
         random_index = std::rand();
+        memset(src, 0, size*sizeof(DATA_TYPE));
     }
 
     ~Memory()
