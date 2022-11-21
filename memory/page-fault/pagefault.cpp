@@ -10,6 +10,7 @@ const int ACCESS_COUNT = 10000;
 const int SIZE = 200'000;
 
 int main() {
+    std::srand(42);
     char * file_address = "/home/ehsan/rand-large.bin";
     int file_read = open(file_address, O_RDONLY, 0);
     if (file_read == -1) {
