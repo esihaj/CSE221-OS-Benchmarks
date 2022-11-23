@@ -5,6 +5,7 @@
 #include <cassert>
 #include <set>
 #include <climits>
+#include <fcntl.h>
 
 using namespace std;
 
