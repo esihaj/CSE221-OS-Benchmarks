@@ -25,6 +25,8 @@ parallel_memset.out: bandwidth/parallel_memset.cpp bandwidth/memset.h
 traverse_memory.out: bandwidth/traverse_memory.cpp
 	$(CC) $(FLAGS) bandwidth/traverse_memory.cpp -o traverse_memory.out
 
+pagefault.out: page-fault/pagefault.cpp
+	$(CC) $(FLAGS) page-fault/pagefault.cpp -o pagefault.out
 
 clean:
 	rm -f $(OBJS) $(OUT)
