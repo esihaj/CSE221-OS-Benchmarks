@@ -70,6 +70,13 @@
         "algorithm": "cpp",
         "barrier": "cpp",
         "set": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "condition_variable": "cpp",
+        "csignal": "cpp",
+        "coroutine": "cpp",
+        "future": "cpp",
+        "list": "cpp"
     }
 }
