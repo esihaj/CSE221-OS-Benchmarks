@@ -71,6 +71,8 @@ int main(int argc, char *argv[])
 
     tcp::resolver resolver(io_context);
     tcp::resolver::results_type resolved_result = resolver.resolve(argv[1], argv[2]);
+    resolver_query(boost::asio::ip::tcp::v4(), "localhost", std::to_string(port_number));
+
 
     for (int i = 0; i < 100; i++)
     {
