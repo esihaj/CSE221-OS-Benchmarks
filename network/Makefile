@@ -12,12 +12,18 @@ client.out: client.cpp
 ping-icmp.out: icmp/icmp_header.hpp icmp/ipv4_header.hpp icmp/ping.cpp
 	$(CC) $(FLAGS) icmp/ping.cpp -o ping-icmp.out
 
-bw-client.out: bandwidth/client.cpp
+bw-client.out: bandwidth/client.cpp bandwidth/config.h 
 	$(CC) $(FLAGS) bandwidth/client.cpp -o bw-client.out
 
-bw-server.out: bandwidth/server.cpp
+bw-server.out: bandwidth/server.cpp bandwidth/config.h
 	$(CC) $(FLAGS) bandwidth/server.cpp -o bw-server.out
 
+connection-client.out: connection-overhead/client.cpp
+	$(CC) $(FLAGS) connection-overhead/client.cpp -o connection-client.out
+
+connection-server.out: connection-overhead/server.cpp
+	$(CC) $(FLAGS) connection-overhead/server.cpp -o connection-server.out
+	
 clean:
 	rm -f $(OUT)
 	
