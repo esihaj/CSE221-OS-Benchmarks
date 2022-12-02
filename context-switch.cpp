@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     std::vector<double> measurements;
     measurements.reserve(ITERATIONS);
 
-    
     // measure context switch
     cpu_set_t set;
     CPU_ZERO(&set);
@@ -34,14 +33,14 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    pid_t cpid = fork();
+    pid_t p_id = fork();
 
-    if (cpid == -1)
+    if (p_id == -1)
     {
         perror("fork");
         exit(EXIT_FAILURE);
     }
-    else if (cpid == 0)
+    else if (p_id == 0)
     { // child
         if (sched_setaffinity(getpid(), sizeof(cpu_set_t), &set) == -1)
         {
@@ -50,8 +49,13 @@ int main(int argc, char *argv[])
 
         for (size_t i = 0; i < ITERATIONS; i++)
         {
-            read(first_pipefd[0], NULL, 0);
-            write(second_pipefd[1], NULL, 0);
+            int len;
+            len = read(first_pipefd[0], NULL, 0);
+            if (len < 0)
+                std::cerr << "could not read! " << p_id << "\n";
+            len = write(second_pipefd[1], NULL, 0);
+            if (len < 0)
+                std::cerr << "could not write! " << p_id << "\n";
         }
     }
     else
@@ -63,9 +67,14 @@ int main(int argc, char *argv[])
 
         for (size_t i = 0; i < ITERATIONS; i++)
         {
+            int len;
             timer.start();
-            write(first_pipefd[1], NULL, 0);
-            read(second_pipefd[0], NULL, 0);
+            len = write(first_pipefd[1], NULL, 0);
+            if (len < 0)
+                std::cerr << "could not write! " << p_id << "\n";
+            len = read(second_pipefd[0], NULL, 0);
+            if (len < 0)
+                std::cerr << "could not read! " << p_id << "\n";
             timer.finish();
             measurements.push_back(timer.duration());
         }
