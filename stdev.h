@@ -21,7 +21,7 @@ double vec_stddev(std::vector<double> const & vec)
 
 void vec_print(std::vector<double> const & vec) {
     std::cout << "values = [";
-    for (int i = 0; i < std::min(MAX_ELEMENTS_TO_PRINT, vec.size()); i++) {
+    for (size_t i = 0; i < std::min(MAX_ELEMENTS_TO_PRINT, vec.size()); i++) {
         std::cout << vec[i] <<", ";
     }
     std::cout << "...]\n";
