@@ -1,6 +1,6 @@
 HEADER	= nano/nanobench.h
 OUT	= *.out
-CC	 = clang++
+CC	 = g++
 FLAGS	 = -O0 -g -Wall -std=c++17
 LFLAGS	 = 
 

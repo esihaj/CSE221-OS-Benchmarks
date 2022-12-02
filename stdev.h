@@ -26,7 +26,7 @@ void vec_print(std::vector<double> const & vec) {
         std::cout << vec[i] <<", ";
     }
     std::cout << "...]\n";
-    std::cout << "mean: " << vec_mean(vec) << " +- " << vec_stddev(vec) << "\n";
+    std::cout << "mean: " << vec_mean(vec) << " ± " << vec_stddev(vec) << "\n";
 }
 
 #endif
