@@ -32,7 +32,7 @@ void measure_cycles(long count)
     RdtscpTimer timer;
     timer.start();
     auto sum = get_a(count);
-    timer.end();
+    timer.finish();
     cout << count << " raw time " << timer.duration() << "res " << sum << "\n";
     // cout << " per element time: " <<  duration / (double)count << " gc" << sum << "\n";
 }
