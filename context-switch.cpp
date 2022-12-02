@@ -1,10 +1,11 @@
-#define _GNU_SOURCE
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/time.h>
 #include <sched.h>
 #include <iostream>
+#include <vector>
+#include "stdev.h"
 #include "time/rdtscp_timer.h"
 
 const int ITERATIONS = 1'000'000;
@@ -12,6 +13,9 @@ const int ITERATIONS = 1'000'000;
 int main(int argc, char *argv[])
 {
     RdtscpTimer timer;
+    std::vector<double> measurements;
+    measurements.reserve(ITERATIONS);
+
     
     // measure context switch
     cpu_set_t set;
@@ -57,14 +61,16 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        timer.start();
         for (size_t i = 0; i < ITERATIONS; i++)
         {
+            timer.start();
             write(first_pipefd[1], NULL, 0);
             read(second_pipefd[0], NULL, 0);
+            timer.finish();
+            measurements.push_back(timer.duration());
         }
-        timer.finish();
-        std::cout<< "context switch " << timer.duration() / (double) ITERATIONS << "\n";
+        std::cout << "process context switch cycles:\n";
+        vec_print(measurements);
     }
     return 0;
 }
