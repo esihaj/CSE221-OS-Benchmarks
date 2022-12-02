@@ -72,6 +72,7 @@ __attribute__((noinline)) int my_function(int val1, int val2, int val3, int val4
 
 #define PRINT_LOOP           \
     vec_print(measurements); \
+    cout << "\n";            \
     measurements.clear();
 
 int main()
@@ -97,7 +98,6 @@ int main()
     cout << "cycles: non_inline function\n";
     PRINT_LOOP
 
-    
     // global = 1;
     // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 1", [&]
     //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global)); });
