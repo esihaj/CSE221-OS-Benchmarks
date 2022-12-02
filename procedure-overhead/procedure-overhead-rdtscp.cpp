@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_MEASUREMENT = 1'000'000;
+const int MAX_MEASUREMENT = 10'000'000;
 
 int global = 0;
 

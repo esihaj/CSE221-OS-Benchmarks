@@ -25,7 +25,7 @@ void vec_print(std::vector<double> const & vec) {
     for (size_t i = 0; i < std::min(MAX_ELEMENTS_TO_PRINT, vec.size()); i++) {
         std::cout << vec[i] <<", ";
     }
-    std::cout << "...]\n";
+    std::cout << "...] size: " << vec.size() <<"\n";
     std::cout << "mean: " << vec_mean(vec) << " ± " << vec_stddev(vec) << "\n";
 }
 
