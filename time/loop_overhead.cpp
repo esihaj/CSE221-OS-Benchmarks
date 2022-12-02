@@ -8,5 +8,5 @@ int main() {
     timer.start();
     for (int i =0; i < MAX_ITERATIONS; i++);
     timer.finish();
-    cout << "loop cost / iteration " << timer.duration() / (double) MAX_ITERATIONS << endl;
+    cout << "loop cost / iteration " << timer.duration() / (double) MAX_ITERATIONS << "cycles" << endl;
 }
