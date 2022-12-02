@@ -5,7 +5,7 @@
 class RdtscpTimer
 {
 private:
-    unsigned long long start, end;
+    unsigned long long start_time, end_time;
 
 public:
     void start()
@@ -16,7 +16,7 @@ public:
                      "mov %%edx, %0\n\t"
                      "mov %%eax, %1\n\t"
                      : "=r"(cycles_high), "=r"(cycles_low)::"%rax", "%rbx", "%rcx", "%rdx");
-        start = (((uint64_t)cycles_high << 32) | cycles_low);
+        start_time = (((uint64_t)cycles_high << 32) | cycles_low);
     }
 
     void finish()
@@ -27,12 +27,12 @@ public:
                      "mov %%eax, %1\n\t"
                      "CPUID\n\t"
                      : "=r"(cycles_high), "=r"(cycles_low)::"%rax", "%rbx", "%rcx", "%rdx");
-        end = (((uint64_t)cycles_high << 32) | cycles_low);
+        end_time = (((uint64_t)cycles_high << 32) | cycles_low);
     }
 
     unsigned long long duration()
     {
-        return (end - start);
+        return (end_time - start_time);
     }
 };
 
