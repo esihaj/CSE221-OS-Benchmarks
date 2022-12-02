@@ -2,13 +2,16 @@
 #include <iostream>
 #include <iomanip>
 #include "rdtscp_timer.h"
+#include "../stdev.h"
 using namespace std;
 
 unsigned long long loop_count = 10'000'000;
 unsigned long long warmup_count = 1'000'000;
 
-void chrono_timer() {
-    std::cout << std::fixed << std::setprecision(9) << std::left;
+const int MAX_MEASUREMENTS = 100;
+
+double chrono_timer()
+{
     auto start = chrono::high_resolution_clock::now();
     auto end = start;
     for (auto i = 0ull; i < warmup_count; i++)
@@ -23,14 +26,13 @@ void chrono_timer() {
 
     std::chrono::duration<double, nano> duration = end - start;
     duration /= loop_count;
-    // duration *= 100÷0;
-    cout << "time = " << duration.count() << " ns" << endl;
+    return duration.count();
 }
 
-void rdtscp_timer() {
-    std::cout << std::fixed << std::setprecision(9) << std::left;
+double rdtscp_timer()
+{
     RdtscpTimer timer;
-    
+
     for (auto i = 0ull; i < warmup_count; i++)
     {
         timer.start();
@@ -42,12 +44,22 @@ void rdtscp_timer() {
 
     unsigned long long duration = timer.duration();
     duration /= loop_count;
-    cout << "time = " << duration << " cycles" << endl;
+    return duration;
 }
 
 int main()
 {
-    chrono_timer();
+    std::cout << std::fixed << std::setprecision(9) << std::left;
+    std::vector<double> chrono_measurements;
+    std::vector<double> rdtscp_measurements;
+
+    cout << "ns\n";
+    for (int i = 0; i < MAX_MEASUREMENTS; i++)
+        chrono_measurements.push_back(chrono_timer());
+    vec_print(chrono_measurements);
     cout << "***********\n";
-    rdtscp_timer();
+    cout << "cycles\n";
+    for (int i = 0; i < MAX_MEASUREMENTS; i++)
+        rdtscp_measurements.push_back(rdtscp_timer());
+    vec_print(rdtscp_measurements);
 }

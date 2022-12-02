@@ -79,5 +79,8 @@
         "future": "cpp",
         "list": "cpp",
         "filesystem": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "rdtscp"
+    ]
 }
