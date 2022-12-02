@@ -4,7 +4,7 @@
 #include <numeric>
 #include <cmath>
 #include <iostream>
-const int MAX_ELEMENTS_TO_PRINT = 5;
+const size_t MAX_ELEMENTS_TO_PRINT = 5;
 
 double vec_mean(std::vector<double> const & vec) {
     return std::accumulate(vec.begin(), vec.end(), 0.0) / vec.size();
@@ -21,7 +21,7 @@ double vec_stddev(std::vector<double> const & vec)
 
 void vec_print(std::vector<double> const & vec) {
     std::cout << "values = ["
-    for (int i = 0; i < min(MAX_ELEMENTS_TO_PRINT, vec.size()); i++) {
+    for (int i = 0; i < std::min(MAX_ELEMENTS_TO_PRINT, vec.size()); i++) {
         std::cout << vec[i] <<", ";
     }
     std::cout << "...]\n";
