@@ -16,5 +16,8 @@ loop_time: loop_chrono_time.cpp $(NANO_OBJ)
 rdtscp: rdtscp.cpp rdtscp_timer.h
 	$(CC) $(FLAGS) rdtscp.cpp -o rdtscp.out
 
+loop_overhead: loop_overhead.cpp rdtscp_timer.h
+	$(CC) $(FLAGS) loop_overhead.cpp -o loop_overhead.out
+
 clean:
 	rm -f $(OUT)
