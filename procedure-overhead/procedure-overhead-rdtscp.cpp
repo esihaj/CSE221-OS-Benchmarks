@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_MEASUREMENT = 50'000'000;
+const int MAX_MEASUREMENT = 5'000'000;
 
 int global = 0;
 
@@ -73,11 +73,13 @@ __attribute__((noinline)) int my_function(int val1, int val2, int val3, int val4
 #define PRINT_LOOP           \
     vec_print(measurements); \
     cout << "\n";            \
-    measurements.clear();
+    measurements.clear();    \
+    measurements.reserve(MAX_MEASUREMENT);
 
 int main()
 {
     vector<double> measurements;
+    measurements.reserve(MAX_MEASUREMENT);
     RdtscpTimer timer;
 
     START_LOOP
