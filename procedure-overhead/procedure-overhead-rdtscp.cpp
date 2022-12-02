@@ -89,34 +89,48 @@ int main()
     START_LOOP
     my_function();
     END_LOOP
-    cout << "cycles: non_inline function\n";
+    cout << "cycles: 0 param function\n";
     PRINT_LOOP
 
     START_LOOP
     my_function(global);
     END_LOOP
-    cout << "cycles: non_inline function\n";
+    cout << "cycles: 1 param function\n";
     PRINT_LOOP
 
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 1", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 2", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 3", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global, global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 4", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global, global, global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 5", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global, global, global, global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 6", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global, global, global, global, global)); });
-    // global = 1;
-    // ankerl::nanobench::Bench().minEpochIterations(1'000'000).run("procedure call args = 7", [&]
-    //                                                              { ankerl::nanobench::doNotOptimizeAway(my_function(global, global, global, global, global, global, global)); });
+    START_LOOP
+    my_function(global, global);
+    END_LOOP
+    cout << "cycles: 2 param function\n";
+    PRINT_LOOP
+
+    START_LOOP
+    my_function(global, global, global);
+    END_LOOP
+    cout << "cycles: 3 param function\n";
+    PRINT_LOOP
+
+    START_LOOP
+    my_function(global, global, global, global);
+    END_LOOP
+    cout << "cycles: 4 param function\n";
+    PRINT_LOOP
+
+    START_LOOP
+    my_function(global, global, global, global, global);
+    END_LOOP
+    cout << "cycles:  5param function\n";
+    PRINT_LOOP
+
+    START_LOOP
+    my_function(global, global, global, global, global, global);
+    END_LOOP
+    cout << "cycles: 6 param function\n";
+    PRINT_LOOP
+
+    START_LOOP
+    my_function(global, global, global, global, global, global, global);
+    END_LOOP
+    cout << "cycles: 7 param function\n";
+    PRINT_LOOP
 }
