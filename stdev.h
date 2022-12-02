@@ -1,3 +1,4 @@
+//https://stackoverflow.com/a/51823578/730033
 #ifndef STD_DEV_H
 #define STD_DEV_H
 #include <vector>
