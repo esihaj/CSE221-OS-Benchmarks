@@ -1,12 +1,22 @@
 #include <iostream>
 #include "rdtscp_timer.h"
+#include "../stdev.h"
 using namespace std;
 
 const int MAX_ITERATIONS = 1'000'000;
-int main() {
+const int MAX_MEASUREMENTS = 1000;
+int main()
+{
     RdtscpTimer timer;
-    timer.start();
-    for (int i =0; i < MAX_ITERATIONS; i++);
-    timer.finish();
-    cout << "loop cost / iteration " << timer.duration() / (double) MAX_ITERATIONS << "cycles" << endl;
+    std::vector<double> measurements;
+    measurements.reserve(MAX_MEASUREMENTS);
+    for (int measurement = 0; measurement < MAX_MEASUREMENTS; measurement++)
+    {
+        timer.start();
+        for (int i = 0; i < MAX_ITERATIONS; i++)
+            ;
+        timer.finish();
+        measurements.push_back(timer.duration() / (double)MAX_ITERATIONS);
+    }
+    vec_print(measurements);
 }
