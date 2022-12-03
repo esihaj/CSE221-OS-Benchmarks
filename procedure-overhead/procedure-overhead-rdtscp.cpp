@@ -1,4 +1,3 @@
-#include "../stdev.h"
 #include "../hdr.h"
 #include "../time/rdtscp_timer.h"
 #include <iostream>
@@ -73,7 +72,6 @@ __attribute__((noinline)) int my_function(int val1, int val2, int val3, int val4
 
 #define PRINT_LOOP           \
     print_hdr(measurements); \
-    vec_print(measurements); \
     cout << "\n";            \
     measurements.clear();    \
     measurements.reserve(MAX_MEASUREMENT);
