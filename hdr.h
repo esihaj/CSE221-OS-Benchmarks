@@ -28,7 +28,9 @@ struct hdr_histogram *prepare_hdr(std::vector<double> &measurements)
 void print_hdr(std::vector<double> &measurements)
 {
     struct hdr_histogram *histogram = prepare_hdr(measurements);
-     hdr_percentiles_print(histogram,
+    std::cout << "p99: " << hdr_value_at_percentile(histogram, 0.99) << ", p999: " << hdr_value_at_percentile(histogram, 0.999) << ", p9999" << hdr_value_at_percentile(histogram, 0.9999) << "\n";
+
+    hdr_percentiles_print(histogram,
                           stdout,   // File to write to
                           5,        // Granularity of printed values
                           1.0,      // Multiplier for results
