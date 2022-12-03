@@ -5,7 +5,7 @@
 #include <iostream>
 #include <hdr/hdr_histogram.h>
 
-void print_hdr(std::vector<double> &measurements, std::string filename)
+struct hdr_histogram *prepare_hdr(std::vector<double> &measurements)
 {
     struct hdr_histogram *histogram;
 
@@ -22,6 +22,22 @@ void print_hdr(std::vector<double> &measurements, std::string filename)
             histogram,
             m);
     }
+    return histogram;
+}
+
+void print_hdr(std::vector<double> &measurements)
+{
+    struct hdr_histogram *histogram = prepare_hdr(measurements);
+     hdr_percentiles_print(histogram,
+                          stdout,   // File to write to
+                          5,        // Granularity of printed values
+                          1.0,      // Multiplier for results
+                          CLASSIC); // Format CLASSIC/CSV supported.
+    hdr_close(histogram);
+}
+void print_hdr(std::vector<double> &measurements, std::string filename)
+{
+    struct hdr_histogram *histogram = prepare_hdr(measurements);
 
     FILE *output = fopen(filename.c_str(), "w+");
     if (output == NULL)
@@ -35,12 +51,13 @@ void print_hdr(std::vector<double> &measurements, std::string filename)
                               CLASSIC); // Format CLASSIC/CSV supported.
     }
 
-
     hdr_percentiles_print(histogram,
                           stdout,   // File to write to
                           5,        // Granularity of printed values
                           1.0,      // Multiplier for results
                           CLASSIC); // Format CLASSIC/CSV supported.
+
+    hdr_close(histogram);
 }
 
 #endif

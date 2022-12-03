@@ -4,6 +4,7 @@ OUT	= *.out
 CC	 = g++
 FLAGS	 = -O0 -g -Wall -std=gnu++17
 LFLAGS	 = 
+RFLAGS = -lhdr_histogram 
 
 NANO_FLAGS = -I./nanobench/
 
@@ -23,5 +24,5 @@ thread: thread.cpp $(NANO_OBJ)
 	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o thread.cpp -o thread.out 
 
 context-switch: context-switch.cpp
-	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out -lhdr_histogram 
+	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out $(RFLAGS)
 	

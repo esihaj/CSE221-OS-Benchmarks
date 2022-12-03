@@ -1,4 +1,5 @@
 #include "../stdev.h"
+#include "../hdr.h"
 #include "../time/rdtscp_timer.h"
 #include <iostream>
 using namespace std;
@@ -71,6 +72,7 @@ __attribute__((noinline)) int my_function(int val1, int val2, int val3, int val4
     cerr << "garbage " << global << "\n";
 
 #define PRINT_LOOP           \
+    print_hdr(measurements); \
     vec_print(measurements); \
     cout << "\n";            \
     measurements.clear();    \
