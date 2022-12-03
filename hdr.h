@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <iostream>
 #include <hdr/hdr_histogram.h>
+#include "stdev.h"
 
 struct hdr_histogram *prepare_hdr(std::vector<double> &measurements)
 {
@@ -36,6 +37,7 @@ void print_hdr(std::vector<double> &measurements)
     struct hdr_histogram *histogram = prepare_hdr(measurements);
     print_hdr_summary(histogram, measurements);
     hdr_close(histogram);
+    vec_print(measurements);
 }
 void print_hdr(std::vector<double> &measurements, std::string filename)
 {

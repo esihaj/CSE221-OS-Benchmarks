@@ -18,5 +18,6 @@ int main()
         timer.finish();
         measurements.push_back(timer.duration() / (double)MAX_ITERATIONS);
     }
+    cout << "cycles: \n"; 
     print_hdr(measurements);
 }
