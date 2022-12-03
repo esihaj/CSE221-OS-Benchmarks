@@ -22,6 +22,6 @@ syscall: syscall.cpp $(NANO_OBJ)
 thread: thread.cpp $(NANO_OBJ)
 	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o thread.cpp -o thread.out 
 
-context-switch: context-switch.cpp $(NANO_OBJ)
-	$(CC) $(FLAGS) -llibhdr_histogram context-switch.cpp -o context-switch.out 
+context-switch: context-switch.cpp
+	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out -lhdr_histogram 
 	
