@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include "rdtscp_timer.h"
-#include "../stdev.h"
+#include "../hdr.h"
 using namespace std;
 
 unsigned long long loop_count = 10'000'000;
@@ -56,10 +56,10 @@ int main()
     cout << "ns\n";
     for (int i = 0; i < MAX_MEASUREMENTS; i++)
         chrono_measurements.push_back(chrono_timer());
-    vec_print(chrono_measurements);
+    print_hdr(chrono_measurements);
     cout << "***********\n";
     cout << "cycles\n";
     for (int i = 0; i < MAX_MEASUREMENTS; i++)
         rdtscp_measurements.push_back(rdtscp_timer());
-    vec_print(rdtscp_measurements);
+    print_hdr(rdtscp_measurements);
 }

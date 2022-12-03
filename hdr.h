@@ -25,11 +25,16 @@ struct hdr_histogram *prepare_hdr(std::vector<double> &measurements)
     return histogram;
 }
 
+void print_hdr_summary(struct hdr_histogram *histogram, std::vector<double> &measurements)
+{
+    std::cout << "p99: " << hdr_value_at_percentile(histogram, 0.99) << ", p999: " << hdr_value_at_percentile(histogram, 0.999) << ", p9999: " << hdr_value_at_percentile(histogram, 0.9999) << "\n";
+    std::cout << "mean: " << hdr_mean(histogram) << ", std: " << hdr_stddev(histogram) << ", total: " << measurements.size() << "\n";
+}
+
 void print_hdr(std::vector<double> &measurements)
 {
     struct hdr_histogram *histogram = prepare_hdr(measurements);
-    std::cout << "p99: " << hdr_value_at_percentile(histogram, 0.99) << ", p999: " << hdr_value_at_percentile(histogram, 0.999) << ", p9999: " << hdr_value_at_percentile(histogram, 0.9999) << "\n";
-    std::cout << "mean: " << hdr_mean(histogram) << ", std: "<< hdr_stddev(histogram) << ", total: " << measurements.size() << "\n";
+    print_hdr_summary(histogram, measurements);
     hdr_close(histogram);
 }
 void print_hdr(std::vector<double> &measurements, std::string filename)
@@ -54,9 +59,7 @@ void print_hdr(std::vector<double> &measurements, std::string filename)
                           1.0,      // Multiplier for results
                           CLASSIC); // Format CLASSIC/CSV supported.
 
-    std::cout << "p99: " << hdr_value_at_percentile(histogram, 0.99) << ", p999: " << hdr_value_at_percentile(histogram, 0.999) << ", p9999: " << hdr_value_at_percentile(histogram, 0.9999) << "\n";
-    std::cout << "mean: " << hdr_mean(histogram) << ", std: "<< hdr_stddev(histogram) << ", total: " << measurements.size() << "\n";
-    
+    print_hdr_summary(histogram, measurements);
     hdr_close(histogram);
 }
 

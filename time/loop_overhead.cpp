@@ -1,6 +1,6 @@
 #include <iostream>
 #include "rdtscp_timer.h"
-#include "../stdev.h"
+#include "../hdr.h"
 using namespace std;
 
 const int MAX_ITERATIONS = 1'000'000;
@@ -18,5 +18,5 @@ int main()
         timer.finish();
         measurements.push_back(timer.duration() / (double)MAX_ITERATIONS);
     }
-    vec_print(measurements);
+    print_hdr(measurements);
 }
