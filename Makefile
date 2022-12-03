@@ -25,4 +25,7 @@ thread: thread.cpp $(NANO_OBJ)
 
 context-switch: context-switch.cpp
 	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out $(RFLAGS)
+
+context-switch-thread: context-switch-thread.cpp
+	$(CC) $(FLAGS) context-switch-thread.cpp -o context-switch-thread.out $(RFLAGS)
 	
