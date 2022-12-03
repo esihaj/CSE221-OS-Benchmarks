@@ -3,7 +3,7 @@ sudo apt update
 sudo apt install -y htop git curl cpufrequtils wget curl g++ gcc tuned msr-tools zlib1g-dev cmake
 
 
-
+CURRENT_DIR = $(PWD)
 echo "setting up Hdr Histograms"
 cd ../
 wget "https://github.com/HdrHistogram/HdrHistogram_c/archive/refs/tags/0.11.6.zip"
@@ -20,6 +20,7 @@ echo "]"
 echo "if it is empty run `LD_LIBRARY_PATH=/usr/local/lib`"
 
 
+cd $CURRENT_DIR
 #https://github.com/redhat-performance/tuned/
 sudo service tuned start
 sudo service tuned status
