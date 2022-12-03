@@ -7,9 +7,12 @@
 #include <vector>
 #include "stdev.h"
 #include "time/rdtscp_timer.h"
-#include <hdr_histogram.h>
+#include <hdr/hdr_histogram.h>
 
 const int ITERATIONS = 1'000'000;
+
+void print_hdr(std::vector<double> &measurements);
+
 
 int main(int argc, char *argv[])
 {
