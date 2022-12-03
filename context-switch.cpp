@@ -7,6 +7,7 @@
 #include <vector>
 #include "stdev.h"
 #include "time/rdtscp_timer.h"
+#include <hdr_histogram.h>
 
 const int ITERATIONS = 1'000'000;
 
@@ -80,6 +81,32 @@ int main(int argc, char *argv[])
         }
         std::cout << "process context switch cycles:\n";
         vec_print(measurements);
+        print_hdr(measurements);
     }
+
     return 0;
+}
+
+void print_hdr(std::vector<double> &measurements)
+{
+    struct hdr_histogram *histogram;
+
+    // Initialise the histogram
+    hdr_init(
+        1,                   // Minimum value
+        INT64_C(3600000000), // Maximum value
+        3,                   // Number of significant figures
+        &histogram)          // Pointer to initialise
+
+    for (const auto m : measurements){
+        hdr_record_value(
+            histogram,
+            m)        
+    }
+
+    hdr_percentiles_print(histogram,
+                          stdout,   // File to write to
+                          5,        // Granularity of printed values
+                          1.0,      // Multiplier for results
+                          CLASSIC); // Format CLASSIC/CSV supported.
 }

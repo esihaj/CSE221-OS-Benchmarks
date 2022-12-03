@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt update
-sudo apt install -y htop git curl cpufrequtils curl g++ gcc tuned msr-tools
+sudo apt install -y htop git curl cpufrequtils curl g++ gcc tuned msr-tools zlib1g-dev cmake
 #https://github.com/redhat-performance/tuned/
 sudo service tuned start
 sudo service tuned status
