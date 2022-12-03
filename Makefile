@@ -23,5 +23,5 @@ thread: thread.cpp $(NANO_OBJ)
 	$(CC) $(NANO_FLAGS) $(FLAGS) nanobench.o thread.cpp -o thread.out 
 
 context-switch: context-switch.cpp $(NANO_OBJ)
-	$(CC) $(FLAGS) context-switch.cpp -o context-switch.out 
+	$(CC) $(FLAGS) -llibhdr_histogram context-switch.cpp -o context-switch.out 
 	
