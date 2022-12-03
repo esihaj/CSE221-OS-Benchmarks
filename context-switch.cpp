@@ -99,12 +99,12 @@ void print_hdr(std::vector<double> &measurements)
         1,                   // Minimum value
         INT64_C(3600000000), // Maximum value
         3,                   // Number of significant figures
-        &histogram)          // Pointer to initialise
+        &histogram);          // Pointer to initialise
 
     for (const auto m : measurements){
         hdr_record_value(
             histogram,
-            m)        
+            m);        
     }
 
     hdr_percentiles_print(histogram,
