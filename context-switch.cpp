@@ -7,7 +7,7 @@
 #include <vector>
 #include "stdev.h"
 #include "time/rdtscp_timer.h"
-#include "../hdr.h"
+#include "hdr.h"
 
 const int ITERATIONS = 1'000'000;
 const std::string EXPERIMENT_HDR_NAME = "context-switch.hdr";
