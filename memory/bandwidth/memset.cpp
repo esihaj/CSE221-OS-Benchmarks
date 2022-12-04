@@ -36,6 +36,11 @@ int Memory::set(int iterations)
     return sum;
 }
 
+int Memory::set_once() {
+    memset(src, 0, total_size_bytes());
+    return src[random_index % (size-1)];
+}
+
 long Memory::total_size_bytes() {
     return size*sizeof(DATA_TYPE);
 }

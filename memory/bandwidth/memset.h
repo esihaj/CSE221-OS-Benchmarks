@@ -17,6 +17,7 @@ public:
     Memory(long size);
     ~Memory();
     int set(int iterations);
+    int set_once();
     void measure(int iterations);
     long total_size_bytes();
 };

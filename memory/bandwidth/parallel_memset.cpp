@@ -6,6 +6,7 @@
 #include <chrono>
 #include <vector>
 #include "memset.h"
+#include "../../hdr.h"
 
 using namespace std;
 
@@ -16,15 +17,23 @@ const long ITERATIONS = 102400;
 void single_thread()
 {
   Memory mem(SIZE);
-  cout << "size in bytes: " << mem.total_size_bytes() << "\n";
-  auto start = chrono::steady_clock::now();
-  auto garbage = mem.set(ITERATIONS);
-  auto end = chrono::steady_clock::now();
-  auto duration_ms = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
+  vector<double> measurements; // in MB/S
+  measurements.reserve(ITERATIONS);
+  int garbage;
+  std::cout << "size in bytes: " << mem.total_size_bytes() << "\n";
+  for (int i = 0; i < ITERATIONS; i++)
+  {
+    auto start = chrono::steady_clock::now();
+    garbage = mem.set_once();
+    auto end = chrono::steady_clock::now();
+    double duration_micros = chrono::duration_cast<chrono::microseconds>((end - start)).count();
+    measurements.push_back(mem.total_size_bytes() / duration_micros);
+  }
+  std::cerr << "garbage: " << garbage << "\n";
+  std::cout << "MB/S\n";
+  print_hdr(measurements);
   // cout << "du" << duration_ms <<;
-  cerr << "garbage: " << garbage << "\n";
-  cout << (SIZE * ITERATIONS * sizeof(DATA_TYPE) / 1024.0) / (double)duration_ms << " MB/S"
-       << "\n";
+  
 }
 
 int main()
