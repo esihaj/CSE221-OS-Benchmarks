@@ -15,6 +15,7 @@ using namespace std;
 #define MiB *1024 * 1204
 
 const int MIN_ACCESS_COUNT = 100'000;
+const int MIN_ITERATIONS = 256;
 
 class Node
 {
@@ -116,7 +117,7 @@ public:
 
 int find_min_iterations(int size)
 {
-    return max(256.0, MIN_ACCESS_COUNT / (double)size);
+    return max((double)MIN_ITERATIONS, MIN_ACCESS_COUNT / (double)size);
 }
 
 int main()
@@ -128,31 +129,4 @@ int main()
         list.measure(find_min_iterations(i));
         cout << "------------------------------------------------\n";
     }
-
-    cout <<"\n";
-    cout << "32-5 KiB\n";
-    LinkedList(((32 - 10) KiB) / node_size).measure(256);
-    cout << "----------------------\n";
-    cout << "32+5 KiB\n";
-    LinkedList(((32 + 10) KiB) / node_size).measure(256);
-
-    cout << "------------------------------------------------\n";
-    cout << "\n";
-    cout << "256-50 KiB\n";
-    LinkedList(((256 - 10) KiB) / node_size).measure(256);
-
-    cout << "----------------------\n";
-    cout << "256+50 KiB\n";
-    LinkedList(((256 + 10) KiB) / node_size).measure(256);
-
-    cout << "------------------------------------------------\n";
-    cout << "\n";
-    cout << "20-5 MiB\n";
-    LinkedList(((20 - 2) MiB) / node_size).measure(256);
-
-    cout << "----------------------\"n";
-    cout << "20+5 MiB\n";
-    LinkedList(((20 + 2) MiB) / node_size).measure(256);
-
-    cout << "------------------------------------------------\n";
 }
