@@ -122,36 +122,36 @@ int find_min_iterations(int size)
 int main()
 {
     double node_size = sizeof(Node);
-    for (double i = 2; i <= (32 * 1024 * 1024) / node_size; i *= sqrt(2))
+    for (double i = 2; i <= (48 * 1024 * 1024) / node_size; i *= sqrt(2))
     {
         LinkedList list(i);
         list.measure(find_min_iterations(i));
         cout << "------------------------------------------------\n";
     }
 
-    
+    cout <<"\n";
     cout << "32-5 KiB\n";
-    LinkedList(((32 - 5) KiB) / node_size).measure(256);
+    LinkedList(((32 - 10) KiB) / node_size).measure(256);
     cout << "----------------------\n";
     cout << "32+5 KiB\n";
-    LinkedList(((32 + 5) KiB) / node_size).measure(256);
+    LinkedList(((32 + 10) KiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
     cout << "\n";
-    cout << "256-10 KiB\n";
+    cout << "256-50 KiB\n";
     LinkedList(((256 - 10) KiB) / node_size).measure(256);
 
     cout << "----------------------\n";
-    cout << "256+10 KiB\n";
+    cout << "256+50 KiB\n";
     LinkedList(((256 + 10) KiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
     cout << "\n";
-    cout << "20-2 MiB\n";
+    cout << "20-5 MiB\n";
     LinkedList(((20 - 2) MiB) / node_size).measure(256);
 
     cout << "----------------------\"n";
-    cout << "20+2 MiB\n";
+    cout << "20+5 MiB\n";
     LinkedList(((20 + 2) MiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
