@@ -6,6 +6,7 @@
 #include <set>
 #include <climits>
 #include <fcntl.h>
+#include <chrono>
 #include "../../drop_file_cache.h"
 
 using namespace std;
@@ -14,14 +15,24 @@ const int BLOCK_SIZE = 4096;
 const int ACCESS_COUNT = 10000;
 const int SIZE = INT_MAX / BLOCK_SIZE;
 const int STRIDE_LIMIT = (SIZE - 1) / ACCESS_COUNT;
+typedef std::chrono::steady_clock Clock;
 
-int main()
+int main(int argc, char *argv[])
 {
+    if (argc < 2)
+    {
+        cerr << "Error: No argument passed to program. should we drop the cache? drop|no_drop" << std::endl;
+        return 1;
+    }
+
+    bool should_drop = argv[1] == "drop" ? true : false;
+
     std::srand(42);
     cout << "selected MAPPING BLOCK COUNT " << SIZE << endl;
-    
+
     const char *file_address = "rand-large.bin";
-    drop_file_cache();
+    if (should_drop)
+        drop_file_cache();
     int file_read = open(file_address, O_RDONLY, 0);
     if (file_read == -1)
     {
@@ -40,11 +51,15 @@ int main()
 
     size_t current_index = 0;
     assert(STRIDE_LIMIT - 10 > 0);
+    auto start = Clock::now();
     for (int i = 0; i < ACCESS_COUNT; i++)
-    {  
+    {
         size_t index_page = rand() % (STRIDE_LIMIT - 10) + 10; // each access is at least 10 4KB blocks away
         current_index += index_page;
         counter += buffer[current_index * BLOCK_SIZE];
     };
-    cout << "don't optimize away " << counter << endl;
+    auto end = Clock::now();
+    cerr << "don't optimize away garbage: " << counter << endl;
+    auto duration = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
+    cout << "duration: " << duration << endl;
 }
