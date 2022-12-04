@@ -70,7 +70,7 @@ double parallel() {
   }
   auto end = chrono::steady_clock::now();
   double duration_micros = chrono::duration_cast<chrono::microseconds>((end - start)).count();
-  cerr << "garbage: " << global_garbage << "\n";
+  // cerr << "garbage: " << global_garbage << "\n";
   for (Memory *m : workers)
     delete m;
 
@@ -87,6 +87,6 @@ int main()
     measurements.push_back(parallel());
   }
   cout << "************\n";
-  cout << "parallel:\n";
+  cout << "parallel:\n";g
   print_hdr(measurements);
 }
