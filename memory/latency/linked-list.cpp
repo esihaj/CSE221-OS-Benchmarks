@@ -77,10 +77,15 @@ public:
     {
         Node *node = head;
         Node *prev;
+        long counter = 0;
         while (node)
         {
             prev = node;
             node = node->next;
+            counter++;
+        }
+        if (counter != size) {
+            cout << "traversed the wrong number of times " << counter << "\n";
         }
         return prev->data;
     }
@@ -89,7 +94,7 @@ public:
     {
         vector<double> measurements;
         measurements.reserve(iterations);
-        auto garbage = traverse(1); // load into cache
+        auto garbage = traverse_once(); // load into cache
         for (int i = 0; i < iterations; i++)
         {
             timer.start();
@@ -105,19 +110,15 @@ public:
 
 int find_min_iterations(int size)
 {
-    return max(128.0, MIN_ACCESS_COUNT / (double)size);
+    return max(256.0, MIN_ACCESS_COUNT / (double)size);
 }
 
 int main()
 {
-    auto start = chrono::steady_clock::now();
-    LinkedList(65536).measure(256);
-    auto end = chrono::steady_clock::now();
-    cout << "duration " << chrono::duration_cast<chrono::milliseconds>((end - start)).count() << endl;
-    // for (int i = 2; i < 1024 * 1024 * 1024; i *= 2)
-    // {
-    //     LinkedList list(i);
-    //     list.measure(find_min_iterations(i));
-    //     cout << "------------------------------------------------\n";
-    // }
+    for (int i = 2; i < 1024 * 1024 * 1024; i *= 2)
+    {
+        LinkedList list(i);
+        list.measure(find_min_iterations(i));
+        cout << "------------------------------------------------\n";
+    }
 }
