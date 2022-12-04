@@ -105,15 +105,19 @@ public:
 
 int find_min_iterations(int size)
 {
-    return max(10.0, MIN_ACCESS_COUNT / (double)size);
+    return max(128.0, MIN_ACCESS_COUNT / (double)size);
 }
 
 int main()
 {
-    for (int i = 2; i < 1024 * 1024 * 1024; i *= 2)
-    {
-        LinkedList list(i);
-        list.measure(find_min_iterations(i));
-        cout << "------------------------------------------------\n";
-    }
+    auto start = chrono::steady_clock::now();
+    LinkedList(65536).measure(256);
+    auto end = chrono::steady_clock::now();
+    cout << "duration " << chrono::duration_cast<chrono::milliseconds>((end - start)).count() << endl;
+    // for (int i = 2; i < 1024 * 1024 * 1024; i *= 2)
+    // {
+    //     LinkedList list(i);
+    //     list.measure(find_min_iterations(i));
+    //     cout << "------------------------------------------------\n";
+    // }
 }
