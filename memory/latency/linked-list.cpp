@@ -5,6 +5,7 @@
 #include <random>
 #include <chrono>
 #include <algorithm>
+#include "../../time/rdtscp_timer.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class LinkedList {
     private:
     Node* head;
     size_t size;
+    RdtscpTimer timer;
     public:
 
     LinkedList(int size) : size(size) {
@@ -63,12 +65,11 @@ class LinkedList {
     }
 
     void measure(int iterations) {
-        auto start = chrono::steady_clock::now();
+        timer.start();
         auto garbage = traverse(iterations);
-        auto end = chrono::steady_clock::now();
-	    long long duration_ns = chrono::duration_cast<chrono::nanoseconds>((end-start)).count();
+        timer.finish();
         cerr << "garbage: " << garbage << "\n";
-        cout << size * sizeof(Node) << "Bytes -> " << duration_ns / (double)(size * iterations) << " iterations: " << iterations << "\n";
+        cout << size * sizeof(Node) / 1024.0 << " KiB -> Cycles:" << timer.duration() / (double)(size * sizeof(Node) * iterations) << " iterations: " << iterations << "\n";
     }
 };
 

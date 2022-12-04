@@ -61,10 +61,6 @@ public:
 };
 
 
-
-
-
-
 void benchmark_memory_access(int pow_size) {
     Data data(pow_size);
     chrono::steady_clock clock;
