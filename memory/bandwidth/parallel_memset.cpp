@@ -16,6 +16,7 @@ const long ITERATIONS = 102400;
 void single_thread()
 {
   Memory mem(SIZE);
+  cout << "size in bytes: " << mem.total_size_bytes() << "\n";
   auto start = chrono::steady_clock::now();
   auto garbage = mem.set(ITERATIONS);
   auto end = chrono::steady_clock::now();

@@ -17,7 +17,7 @@ Memory::Memory(long size) : size(size)
 {
     src = new DATA_TYPE[size];
     random_index = std::rand();
-    memset(src, 1, size*sizeof(DATA_TYPE));
+    memset(src, 1, total_size_bytes());
 }
 
 Memory::~Memory()
@@ -30,12 +30,15 @@ int Memory::set(int iterations)
     int sum = 0;
     for (int iter = 0; iter < iterations; iter += 1)
     {
-        memset(src, iter % 100, size*sizeof(DATA_TYPE));
+        memset(src, iter % 100, total_size_bytes());
         sum += src[random_index % (size-1)];
     }
     return sum;
 }
 
+long Memory::total_size_bytes() {
+    return size*sizeof(DATA_TYPE);
+}
 
 void Memory::measure(int iterations)
 {
