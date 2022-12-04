@@ -6,6 +6,7 @@
 #include <set>
 #include <climits>
 #include <fcntl.h>
+#include "../../drop_file_cache.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ int main()
     cout << "selected MAPPING BLOCK COUNT " << SIZE << endl;
     
     const char *file_address = "rand-large.bin";
+    drop_file_cache();
     int file_read = open(file_address, O_RDONLY, 0);
     if (file_read == -1)
     {
