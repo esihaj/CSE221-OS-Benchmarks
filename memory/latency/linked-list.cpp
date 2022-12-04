@@ -10,8 +10,8 @@
 
 using namespace std;
 
-#define KiB * 1024
-#define MiB * 1024 * 1204
+#define KiB *1024
+#define MiB *1024 * 1204
 
 const int MIN_ACCESS_COUNT = 100'000;
 
@@ -87,7 +87,8 @@ public:
             node = node->next;
             counter++;
         }
-        if (counter != size) {
+        if (counter != size)
+        {
             cout << "traversed the wrong number of times " << counter << "\n";
         }
         return prev->data;
@@ -106,7 +107,8 @@ public:
             measurements.push_back(timer.duration() / (double)(size));
         }
         cerr << "garbage: " << garbage << "\n";
-        cout << size * sizeof(Node) / 1024.0 << " KiB. Elements: " << size << ", Iterations: " << iterations << ". cycles/element:" << "\n";
+        cout << size * sizeof(Node) / 1024.0 << " KiB. Elements: " << size << ", Iterations: " << iterations << ". cycles/element:"
+             << "\n";
         print_hdr(measurements);
     }
 };
@@ -126,22 +128,28 @@ int main()
     }
 
     double node_size = sizeof(Node);
+    cout << "32-5 KiB\n";
     LinkedList(((32 - 5) KiB) / node_size).measure(256);
-    cout << "------------------------------------------------\n";
-        LinkedList(((32 + 5) KiB) / node_size).measure(256);
+    cout << "----------------------\n";
+    cout << "32+5 KiB\n";
+    LinkedList(((32 + 5) KiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
     cout << "\n";
+    cout << "256-10 KiB\n";
     LinkedList(((256 - 10) KiB) / node_size).measure(256);
 
-    cout << "------------------------------------------------\n";
+    cout << "----------------------\n";
+    cout << "256+10 KiB\n";
     LinkedList(((256 + 10) KiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
     cout << "\n";
+    cout << "20-2 MiB\n";
     LinkedList(((20 - 2) MiB) / node_size).measure(256);
 
-    cout << "------------------------------------------------\n";
+    cout << "----------------------\"n";
+    cout << "20+2 MiB\n";
     LinkedList(((20 + 2) MiB) / node_size).measure(256);
 
     cout << "------------------------------------------------\n";
