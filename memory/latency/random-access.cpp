@@ -48,15 +48,19 @@ public:
         delete[] back_store;
     }
 
-    int access() {
+    int access(int access_count) {
         int counter = 0;
-        for (int iter = 0; iter < ACCESS_COUNT; iter++) {
+        for (int iter = 0; iter < access_count; iter++) {
             auto index = access_indicies[iter % access_indicies.size()];
             // cout << index << ", ";
             counter += back_store[index];
         }
         cout << endl;
         return counter;
+    }
+
+    int get_size() {
+        return size;
     }
 };
 
@@ -65,8 +69,9 @@ void benchmark_memory_access(int pow_size) {
     Data data(pow_size);
     chrono::steady_clock clock;
     
+    data.access(data.get_size());
     auto start = clock.now();
-    auto res = data.access();
+    auto res = data.access(ACCESS_COUNT);
     auto end = clock.now();
     
     auto duration = duration_cast<chrono::nanoseconds>(end - start).count();
