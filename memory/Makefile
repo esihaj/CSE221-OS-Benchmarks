@@ -3,6 +3,7 @@ OUT	= *.out
 CC	 = g++
 FLAGS	 = -O3 -g -Wall -std=gnu++2a
 LFLAGS	 = 
+RFLAGS = -lhdr_histogram 
 
 # all: $(OBJS)
 # 	$(CC) $(NANO_FLAGS) -g $(OBJS) -o $(OUT) $(LFLAGS)
@@ -20,7 +21,7 @@ memset.out: bandwidth/memset.cpp bandwidth/memset.h
 	$(CC) $(FLAGS) bandwidth/memset.cpp -o memset.out
 
 parallel_memset.out: bandwidth/parallel_memset.cpp bandwidth/memset.h
-	$(CC) $(FLAGS) bandwidth/memset.cpp bandwidth/parallel_memset.cpp -o parallel_memset.out
+	$(CC) $(FLAGS) bandwidth/memset.cpp bandwidth/parallel_memset.cpp -o parallel_memset.out $(RFLAGS)
 
 traverse_memory.out: bandwidth/traverse_memory.cpp
 	$(CC) $(FLAGS) bandwidth/traverse_memory.cpp -o traverse_memory.out
