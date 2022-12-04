@@ -46,7 +46,7 @@ double parallel() {
   auto start = chrono::steady_clock::now();
   auto on_completion = [&start]() noexcept
   {
-    std::cout << "sync point reached by all threads.\n";
+    // std::cout << "sync point reached by all threads.\n";
     start = chrono::steady_clock::now();
   };
 
@@ -70,7 +70,7 @@ double parallel() {
   }
   auto end = chrono::steady_clock::now();
   double duration_micros = chrono::duration_cast<chrono::microseconds>((end - start)).count();
-  // cerr << "garbage: " << global_garbage << "\n";
+  // g
   for (Memory *m : workers)
     delete m;
 
@@ -87,6 +87,6 @@ int main()
     measurements.push_back(parallel());
   }
   cout << "************\n";
-  cout << "parallel:\n";g
+  cout << "parallel:\n";
   print_hdr(measurements);
 }
