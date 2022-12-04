@@ -68,7 +68,7 @@ class LinkedList {
         auto end = chrono::steady_clock::now();
 	    long long duration_ns = chrono::duration_cast<chrono::nanoseconds>((end-start)).count();
         cerr << "garbage: " << garbage << "\n";
-        cout << size << " -> " << duration_ns / (double)(size * iterations) << " iterations: " << iterations << "\n";
+        cout << size * sizeof(Node) << "Bytes -> " << duration_ns / (double)(size * iterations) << " iterations: " << iterations << "\n";
     }
 };
 

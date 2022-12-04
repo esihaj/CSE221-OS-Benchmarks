@@ -5,6 +5,7 @@
 #include <vector>
 #include <numeric>
 #include <chrono>
+#include <cassert>
 
 using namespace std;
 
