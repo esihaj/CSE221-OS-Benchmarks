@@ -122,7 +122,7 @@ int find_min_iterations(int size)
 int main()
 {
     double node_size = sizeof(Node);
-    for (int i = 2; i <= (32 * 1024 * 1024) / node_size; i *= sqrt(2))
+    for (double i = 2; i <= (32 * 1024 * 1024) / node_size; i *= sqrt(2))
     {
         LinkedList list(i);
         list.measure(find_min_iterations(i));
