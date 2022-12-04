@@ -93,7 +93,7 @@ public:
         for (int i = 0; i < iterations; i++)
         {
             timer.start();
-            garbage += traverse(iterations);
+            garbage += traverse_once();
             timer.finish();
             measurements.push_back(timer.duration() / (double)(size * iterations));
         }
