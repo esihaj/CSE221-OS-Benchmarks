@@ -56,7 +56,7 @@ double parallel() {
   auto work = [&](Memory *memory)
   {
     sync_point.arrive_and_wait(); // wait until every thread is ready.
-    global_garbage += memory->set_once();
+    global_garbage += memory->set(128);
   };
 
   std::vector<std::thread> threads;
@@ -74,7 +74,7 @@ double parallel() {
   for (Memory *m : workers)
     delete m;
 
-  return bytes * THREADS / duration_micros;
+  return (bytes * THREADS * 128) / duration_micros;
 }
 
 int main()
@@ -87,6 +87,6 @@ int main()
     measurements.push_back(parallel());
   }
   cout << "************\n";
-  cout << "parallel:\n";
+  cout << "parallel:\n";g
   print_hdr(measurements);
 }
