@@ -38,7 +38,8 @@ class LinkedList {
         for (auto index: rl) {
             if (counter < 10) 
                 cout << index << ", ";
-            cout << "\n";
+            if (counter == 10) 
+                cout << "\n";
             counter++;
             current->next = &(contiguous[index]);
             current = current->next;
