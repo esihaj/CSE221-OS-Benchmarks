@@ -21,7 +21,7 @@ memset.out: bandwidth/memset.cpp bandwidth/memset.h
 	$(CC) $(FLAGS) bandwidth/memset.cpp -o memset.out
 
 parallel_memset.out: bandwidth/parallel_memset.cpp bandwidth/memset.h
-	$(CC) $(FLAGS) bandwidth/memset.cpp bandwidth/parallel_memset.cpp -o parallel_memset.out $(RFLAGS)
+	$(CC) $(FLAGS) bandwidth/memset.cpp bandwidth/parallel_memset.cpp -o parallel_memset.out $(RFLAGSg)
 
 traverse_memory.out: bandwidth/traverse_memory.cpp
 	$(CC) $(FLAGS) bandwidth/traverse_memory.cpp -o traverse_memory.out

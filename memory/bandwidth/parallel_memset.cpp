@@ -36,15 +36,12 @@ void single_thread()
   
 }
 
-int main()
-{
-  // const auto workers = { "thread_1", "thread_2", "thread_3" };
-  // const auto workers = { Memory(SIZE), Memory(SIZE), Memory(SIZE), Memory(SIZE) };
-  // const auto workers = { Memory(SIZE), Memory(SIZE), Memory(SIZE), Memory(SIZE) };
-  single_thread();
+double parallel() {
   vector<Memory *> workers; //(THREADS, Memory(SIZE));
   for (int i = 0; i < THREADS; i++)
     workers.push_back(new Memory(SIZE));
+  
+  long bytes = workers[0]->total_size_bytes();
 
   auto start = chrono::steady_clock::now();
   auto on_completion = [&start]() noexcept
@@ -59,7 +56,7 @@ int main()
   auto work = [&](Memory *memory)
   {
     sync_point.arrive_and_wait(); // wait until every thread is ready.
-    global_garbage += memory->set(ITERATIONS);
+    global_garbage += memory->set_once();
   };
 
   std::vector<std::thread> threads;
@@ -72,11 +69,24 @@ int main()
     thread.join();
   }
   auto end = chrono::steady_clock::now();
-  auto duration_ms = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
-  // cout << "du" << duration_ms <<;
+  double duration_micros = chrono::duration_cast<chrono::microseconds>((end - start)).count();
   cerr << "garbage: " << global_garbage << "\n";
-  cout << (SIZE * ITERATIONS * THREADS * sizeof(DATA_TYPE) / 1024) / (double)duration_ms << " MB/S"
-       << "\n";
   for (Memory *m : workers)
     delete m;
+
+  return bytes * THREADS / duration_micros;
+}
+
+int main()
+{
+  single_thread();
+
+  vector<double> measurements;
+  measurements.reserve(ITERATIONS);
+  for (int i = 0; i < ITERATIONS; i++) {
+    measurements.push_back(parallel());
+  }
+  cout << "************\n";
+  cout << "parallel:\n";
+  print_hdr(measurements);
 }
