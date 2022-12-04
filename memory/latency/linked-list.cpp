@@ -100,7 +100,7 @@ public:
             timer.start();
             garbage += traverse_once();
             timer.finish();
-            measurements.push_back(timer.duration() / (double)(size * iterations));
+            measurements.push_back(timer.duration() / (double)(size));
         }
         cerr << "garbage: " << garbage << "\n";
         cout << size * sizeof(Node) / 1024.0 << " KiB. Elements: " << size << ", Iterations: " << iterations << ". cycles/element:" << "\n";
