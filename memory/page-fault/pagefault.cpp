@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    bool should_drop = argv[1] == "drop" ? true : false;
+    bool should_drop = string(argv[1]) == "drop" ? true : false;
 
     std::srand(42);
     cout << "selected MAPPING BLOCK COUNT " << SIZE << endl;
