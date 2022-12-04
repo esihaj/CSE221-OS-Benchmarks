@@ -61,5 +61,5 @@ int main(int argc, char *argv[])
     auto end = Clock::now();
     cerr << "don't optimize away garbage: " << counter << endl;
     auto duration = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
-    cout << "duration: " << duration << endl;
+    cout << "duration: " << duration  << " ms"<< endl;
 }
