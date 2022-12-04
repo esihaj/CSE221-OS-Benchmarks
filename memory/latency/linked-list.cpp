@@ -63,14 +63,15 @@ class LinkedList {
         for(int i = 0; i < iterations; i++) {
             node = head;
             Node * prev;
+            counter = 0;
             while (node) {
                 prev = node;
                 node = node->next;
                 counter++;
             }
-            cout << "counter " << counter << endl;
             count += prev->data;
         }
+        cout << "counter " << counter << endl;
         return count;
     }
 
