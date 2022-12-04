@@ -9,10 +9,10 @@ RFLAGS = -lhdr_histogram
 # 	$(CC) $(NANO_FLAGS) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
 random-access.out: latency/random-access.cpp
-	$(CC) $(FLAGS) latency/random-access.cpp -o random-access.out
+	$(CC) $(FLAGS) latency/random-access.cpp -o random-access.out $(RFLAGS)
 
 linked-list.out: latency/linked-list.cpp
-	$(CC) $(FLAGS) latency/linked-list.cpp -o linked-list.out
+	$(CC) $(FLAGS) latency/linked-list.cpp -o linked-list.out $(RFLAGS)
 
 memcopy.out: bandwidth/memcopy.cpp
 	$(CC) $(FLAGS) bandwidth/memcopy.cpp -o memcopy.out
