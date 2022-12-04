@@ -30,10 +30,12 @@ int Memory::set(int iterations)
     int sum = 0;
     for (int iter = 0; iter < iterations; iter += 1)
     {
-        memset(src, 1, size*sizeof(DATA_TYPE));
+        memset(src, iter % 100, size*sizeof(DATA_TYPE));
+        sum += src[random_index % (size-1)];
     }
-    return src[random_index % (size-1)];
+    return sum;
 }
+
 
 void Memory::measure(int iterations)
 {
@@ -45,6 +47,7 @@ void Memory::measure(int iterations)
     cerr << "garbage: " << garbage << "\n";
     cout << size << " -> " << (size * iterations * sizeof(DATA_TYPE) / 1024)/ (double)duration_ms << " MB/S iterations: " << iterations << "\n";
 }
+
 
 // int main()
 // {

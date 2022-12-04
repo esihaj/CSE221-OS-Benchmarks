@@ -10,8 +10,8 @@
 using namespace std;
 
 const int THREADS = 4;
-const int SIZE = 4 * 1024;
-const int ITERATIONS = 102400;
+const long SIZE = 64 * 1024;
+const long ITERATIONS = 102400;
 
 void single_thread()
 {
@@ -22,7 +22,7 @@ void single_thread()
   auto duration_ms = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
   // cout << "du" << duration_ms <<;
   cerr << "garbage: " << garbage << "\n";
-  cout << (SIZE * ITERATIONS * sizeof(DATA_TYPE) / 1024) / (double)duration_ms << " MB/S"
+  cout << (SIZE * ITERATIONS * sizeof(DATA_TYPE) / 1024.0) / (double)duration_ms << " MB/S"
        << "\n";
 }
 
