@@ -28,7 +28,7 @@ struct hdr_histogram *prepare_hdr(std::vector<double> &measurements)
 
 void print_hdr_summary(struct hdr_histogram *histogram, std::vector<double> &measurements)
 {
-    std::cout << "p99: " << hdr_value_at_percentile(histogram, 0.99) << ", p999: " << hdr_value_at_percentile(histogram, 0.999) << ", p9999: " << hdr_value_at_percentile(histogram, 0.9999) << "\n";
+    std::cout << "p99: " << hdr_value_at_percentile(histogram, 99.0) << ", p999: " << hdr_value_at_percentile(histogram, 99.9) << ", p9999: " << hdr_value_at_percentile(histogram, 99.99) << "\n";
     std::cout << "mean: " << hdr_mean(histogram) << ", std: " << hdr_stddev(histogram) << ", total: " << measurements.size() << "\n";
 }
 
