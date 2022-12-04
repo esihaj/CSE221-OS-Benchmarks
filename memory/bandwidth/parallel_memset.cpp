@@ -87,6 +87,6 @@ int main()
     measurements.push_back(parallel());
   }
   cout << "************\n";
-  cout << "parallel:\n";g
+  cout << "parallel:\n";
   print_hdr(measurements);
 }
