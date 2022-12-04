@@ -26,9 +26,13 @@ parallel_memset.out: bandwidth/parallel_memset.cpp bandwidth/memset.h
 traverse_memory.out: bandwidth/traverse_memory.cpp
 	$(CC) $(FLAGS) bandwidth/traverse_memory.cpp -o traverse_memory.out
 
-pagefault.out: page-fault/pagefault.cpp
+pagefault.out: page-fault/pagefault.cpp rand-large.bin
 	$(CC) $(FLAGS) page-fault/pagefault.cpp -o pagefault.out
 
+rand-large.bin:
+	dd if=/dev/urandom of=rand-large.bin bs=4K count=1M
+
+
 clean:
-	rm -f $(OBJS) $(OUT)
+	rm -f $(OBJS) $(OUT) rand-large.bin
 	

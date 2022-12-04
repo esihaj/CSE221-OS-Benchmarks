@@ -19,7 +19,7 @@ int main()
     std::srand(42);
     cout << "selected MAPPING BLOCK COUNT " << SIZE << endl;
     
-    char *file_address = "/tmp/rand-large.bin";
+    const char *file_address = "rand-large.bin";
     int file_read = open(file_address, O_RDONLY, 0);
     if (file_read == -1)
     {
