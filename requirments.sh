@@ -21,6 +21,10 @@ echo "if it is empty run `LD_LIBRARY_PATH=/usr/local/lib`"
 
 
 cd $CURRENT_DIR
+#disable hyperthreading
+echo "\n\n\n\nhyper threading:"
+sudo echo off > /sys/devices/system/cpu/smt/control
+cat /sys/devices/system/cpu/smt/active
 #https://github.com/redhat-performance/tuned/
 sudo service tuned start
 sudo service tuned status
