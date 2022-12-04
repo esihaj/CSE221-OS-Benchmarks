@@ -65,8 +65,9 @@ class LinkedList {
     }
 
     void measure(int iterations) {
+        auto garbage = traverse(1); // load into cache
         timer.start();
-        auto garbage = traverse(iterations);
+        garbage += traverse(iterations);
         timer.finish();
         cerr << "garbage: " << garbage << "\n";
         cout << size * sizeof(Node) / 1024.0 << " KiB -> Cycles:" << timer.duration() / (double)(size * sizeof(Node) * iterations) << " iterations: " << iterations << "\n";
