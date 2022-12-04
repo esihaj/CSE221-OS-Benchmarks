@@ -75,7 +75,7 @@ class LinkedList {
 };
 
 int find_min_iterations(int size) {
-    return max(1.0, MIN_ACCESS_COUNT / (double) size);
+    return max(10.0, MIN_ACCESS_COUNT / (double) size);
 }
 
 int main() {
