@@ -31,7 +31,15 @@ class LinkedList {
         head = &(contiguous[0]);
         Node * current = head;
 
-        for (auto index: random_list(size)) {
+        long counter = 0;
+        
+        auto rl = random_list(size);
+        cout << "random indexes: size:" << rl.size() <<" indx: ";
+        for (auto index: rl) {
+            if (counter < 10) 
+                cout << index << ", ";
+            cout << "\n";
+            counter++;
             current->next = &(contiguous[index]);
             current = current->next;
         }
@@ -51,14 +59,16 @@ class LinkedList {
 
     long traverse(int iterations) {
         Node * node;
-        long count = 0;
+        long count = 0, counter = 0;
         for(int i = 0; i < iterations; i++) {
             node = head;
             Node * prev;
             while (node) {
                 prev = node;
                 node = node->next;
+                counter++;
             }
+            cout << "counter " << counter << endl;
             count += prev->data;
         }
         return count;
