@@ -88,5 +88,5 @@ int main()
   }
   cout << "************\n";
   cout << "parallel:\n";
-  print_hdr(measurements);
+  print_hdr(measurements, "parallel_memset.hdr");
 }
