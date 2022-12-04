@@ -98,7 +98,7 @@ public:
             measurements.push_back(timer.duration() / (double)(size * iterations));
         }
         cerr << "garbage: " << garbage << "\n";
-        cout << size * sizeof(Node) / 1024.0 << " KiB. Iterations: " << iterations << ". cycles/element:" << "\n";
+        cout << size * sizeof(Node) / 1024.0 << " KiB. Elements: " << size << ", Iterations: " << iterations << ". cycles/element:" << "\n";
         print_hdr(measurements);
     }
 };
@@ -114,5 +114,6 @@ int main()
     {
         LinkedList list(i);
         list.measure(find_min_iterations(i));
+        cout << "------------------------------------------------\n";
     }
 }
