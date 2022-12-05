@@ -62,11 +62,11 @@ int main(int argc, char *argv[])
     boost::asio::io_context io_context;
     tcp::resolver resolver(io_context);
     auto resolved_result = resolver.resolve(argv[1], argv[2]);
-    int packet_len = PACKET_LENGTH_START;
+    int packet_len = PACKET_LENGTH;
     for (int i = 0; i < MAX_MEASUREMENTS; i++) {
       measurements.push_back(measure_bandwidth(io_context,resolved_result, packet_len));
-      cout << "packet: " << packet_len << " = " << measurements[i] << "\n";
-      packet_len *= 2;
+      // cout << "packet: " << packet_len << " = " << measurements[i] << "\n";
+      // packet_len *= 2;
     }
   }
   catch (std::exception &e)

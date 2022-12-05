@@ -22,7 +22,7 @@ using boost::asio::ip::tcp;
 const std::string EXPECTED_PING = "ping";
 const std::string RESPONSE_PONG = "pong";
 
-int packet_len = PACKET_LENGTH_START;
+int packet_len = PACKET_LENGTH;
 
 void session(tcp::socket sock)
 {
@@ -51,8 +51,7 @@ void session(tcp::socket sock)
   {
     std::cerr << "Exception in thread: " << e.what() << "\n";
   }
-  packet_len *= 2;
-
+  // packet_len *= 2;
 }
 
 void server(boost::asio::io_context& io_context, unsigned short port)
