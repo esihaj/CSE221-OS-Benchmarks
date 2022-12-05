@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <chrono>
 #include "../drop_file_cache.h"
+#include "../hdr.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ const int REPETITIONS_PER_SIZE = 5;
 const int STEP_SIZE = 4 KiB;
 
 const long READ_SIZES[] = {512 MiB, 1 GiB, 2 GiB, 4 GiB, 8 GiB, 12 GiB, 16 GiB, 20 GiB};
-const char *file_name = "/tmp/large-file.bin";
+const char *file_name = "rand-large.bin";
 
 typedef std::chrono::steady_clock Clock;
 
@@ -58,7 +59,7 @@ int main()
         cout << "read size: " << read_size / (1 MiB) << "MB\n";
         size_t step_count = read_size / STEP_SIZE;
         int black_hole = 0;
-        
+        vector<double> measurements;
         for (int rep = 0; rep < REPETITIONS_PER_SIZE; rep++)
         {
             lseek(fd, 0, SEEK_SET);
@@ -73,9 +74,10 @@ int main()
             }
             auto end = Clock::now();
             auto duration = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
-            cout << "bandwidth: " << READ_SIZES[size_index] / (double)duration / 1024 << "MB/S\n";
-            cerr << "garbage: " << black_hole << "\n";
+            measurements.push_back(duration);
         }
-        cout << "*******\n\n";
+        cerr << "garbage: " << black_hole << "\n";
+        print_hdr(measurements);
+        cout << "\n";
     }
 }
