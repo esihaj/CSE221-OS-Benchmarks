@@ -29,3 +29,6 @@ context-switch: context-switch.cpp
 context-switch-thread: context-switch-thread.cpp
 	$(CC) $(FLAGS) context-switch-thread.cpp -o context-switch-thread.out $(RFLAGS)
 	
+sample-hdr: sample-hdr.cpp
+	$(CC) $(FLAGS) sample-hdr.cpp -o sample-hdr.out $(RFLAGS)
+	
