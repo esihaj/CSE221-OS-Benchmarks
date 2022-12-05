@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <chrono>
 #include "../drop_file_cache.h"
+#include "../hdr.h"
 
 using namespace std;
 
@@ -52,6 +53,7 @@ int main()
     int fd = open_file();
     char *buff = new char[STEP_SIZE];
 
+    cout << "results are in MB/S\n";
     for (int size_index = 0; size_index < std::size(READ_SIZES); size_index++)
     {
         long read_size = READ_SIZES[size_index];
@@ -68,7 +70,7 @@ int main()
             black_hole += buff[0];
         }
         cerr << "garbage: " << black_hole << "\n";
-
+        vector<double> measurements;
         for (int rep = 0; rep < REPETITIONS_PER_SIZE; rep++)
         {
             lseek(fd, 0, SEEK_SET);
@@ -82,8 +84,9 @@ int main()
             }
             auto end = Clock::now();
             auto duration = chrono::duration_cast<chrono::milliseconds>((end - start)).count();
-            cout << "bandwidth: " << READ_SIZES[size_index] / (double)duration / 1024 << "MB/S\n";
+            measurements.push_back(READ_SIZES[size_index] / (double)duration / 1024);
         }
+        print_hdr(measurements);
         cout << "*******\n\n";
     }
 }
