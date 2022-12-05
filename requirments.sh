@@ -24,6 +24,12 @@ echo "${GREEN}if it is empty run `LD_LIBRARY_PATH=/usr/local/lib`${NC}"
 
 
 cd $CURRENT_DIR
+cd ../
+wget "https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz"
+tar -xf boost_1_80_0.tar.gz
+
+
+cd $CURRENT_DIR
 #disable hyperthreading
 echo -n "${GREEN}hyper threading:${NC}"
 sudo echo off > /sys/devices/system/cpu/smt/control
