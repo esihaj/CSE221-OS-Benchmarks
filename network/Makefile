@@ -24,6 +24,12 @@ connection-client.out: connection-overhead/client.cpp
 
 connection-server.out: connection-overhead/server.cpp
 	$(CC) $(FLAGS) connection-overhead/server.cpp -o connection-server.out
+
+c-connection-client.out: connection-overhead-c/client.c
+	gcc connection-overhead-c/client.c -o c-connection-client.out
+
+c-connection-server.out: connection-overhead-c/server.c
+	gcc connection-overhead-c/server.c -o c-connection-server.out
 	
 clean:
 	rm -f $(OUT)
