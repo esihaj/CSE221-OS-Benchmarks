@@ -1,6 +1,6 @@
 OUT	= *.out
 CC	 = g++
-BOOST = ../../boost_1_80_0/boost/
+BOOST = ../../boost_1_80_0/
 FLAGS	 = -O3 -g -Wall -std=gnu++2a -I$(BOOST) -Wno-deprecated-declarations
 
 server.out: server.cpp

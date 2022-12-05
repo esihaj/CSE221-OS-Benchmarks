@@ -1,8 +1,9 @@
 #!/bin/bash
+set -e
 
 GREEN='\033[1;32m\n\n\n'
 NC='\033[0m' # No Color
-CURRENT_DIR=$(PWD)
+CURRENT_DIR=$(pwd)
 echo -e "${GREEN}current dir: $CURRENT_DIR ${NC}"
 
 sudo apt update
@@ -23,6 +24,7 @@ echo "]"
 echo "${GREEN}if it is empty run `LD_LIBRARY_PATH=/usr/local/lib`${NC}"
 
 
+echo -e "${GREEN}setting up C++ Boost library${NC}"
 cd $CURRENT_DIR
 cd ../
 wget "https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz"
