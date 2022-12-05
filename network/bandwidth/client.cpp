@@ -73,6 +73,6 @@ int main(int argc, char *argv[])
   {
     std::cerr << "Exception: " << e.what() << "\n";
   }
-
+  print_hdr(measurements);
   return 0;
 }
