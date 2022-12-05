@@ -17,8 +17,8 @@ using namespace std;
 const int REPETITIONS_PER_SIZE = 5;
 const int STEP_SIZE = 4 KiB;
 
-const long READ_SIZES[] = {512 MiB, 1 GiB, 2 GiB, 4 GiB, 8 GiB, 12 GiB, 16 GiB, 20 GiB};
-const char *file_name = "/tmp/large-file.bin";
+const long READ_SIZES[] = {512 MiB, 1 GiB, 2 GiB, 4 GiB, 8 GiB, 12 GiB};
+const char *file_name = "large-file.bin";
 
 typedef std::chrono::steady_clock Clock;
 
