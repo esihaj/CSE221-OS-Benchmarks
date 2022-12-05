@@ -12,6 +12,7 @@
 #include <iostream>
 #include <thread>
 #include <utility>
+#include <vector>
 #include <boost/asio.hpp>
 #include "config.h"
 
@@ -25,10 +26,9 @@ int packet_len = PACKET_LENGTH_START;
 
 void session(tcp::socket sock)
 {
+  std::vector<char> data(packet_len);
   try
   {
-    char data[packet_len];
-
     boost::system::error_code error;
     size_t length = sock.read_some(boost::asio::buffer(data), error);
     if (error == boost::asio::error::eof)
@@ -52,6 +52,7 @@ void session(tcp::socket sock)
     std::cerr << "Exception in thread: " << e.what() << "\n";
   }
   packet_len *= 2;
+
 }
 
 void server(boost::asio::io_context& io_context, unsigned short port)

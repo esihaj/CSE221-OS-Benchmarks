@@ -36,7 +36,8 @@ double measure_bandwidth(boost::asio::io_context &io_context, tcp::resolver::res
   size_t total = 0;
   while (total < MAX_TRANSFER)
   {
-    char reply[packet_len];
+    // char reply[packet_len];
+    std::vector<char> reply(packet_len);
     size_t reply_length = boost::asio::read(s,
                                             boost::asio::buffer(reply, packet_len));
     total += reply_length;
@@ -60,7 +61,7 @@ int main(int argc, char *argv[])
 
     boost::asio::io_context io_context;
     tcp::resolver resolver(io_context);
-    auto resolved_result = resolver.resolve(argv[1], argv[2]))
+    auto resolved_result = resolver.resolve(argv[1], argv[2]);
     int packet_len = PACKET_LENGTH_START;
     for (int i = 0; i < MAX_MEASUREMENTS; i++) {
       measurements.push_back(measure_bandwidth(io_context,resolved_result, packet_len));
