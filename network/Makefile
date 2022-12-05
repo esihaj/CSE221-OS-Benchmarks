@@ -2,12 +2,13 @@ OUT	= *.out
 CC	 = g++
 BOOST = ../../boost_1_80_0/
 FLAGS	 = -O3 -g -Wall -std=gnu++2a -I$(BOOST) -Wno-deprecated-declarations
+RFLAGS = -lhdr_histogram
 
 server.out: server.cpp
 	$(CC) $(FLAGS) server.cpp -o server.out
 
 client.out: client.cpp
-	$(CC) $(FLAGS) client.cpp -o client.out
+	$(CC) $(FLAGS) client.cpp -o client.out $(RFLAGS)
 
 ping-icmp.out: icmp/icmp_header.hpp icmp/ipv4_header.hpp icmp/ping.cpp
 	$(CC) $(FLAGS) icmp/ping.cpp -o ping-icmp.out
