@@ -12,6 +12,8 @@ Some experiments need `nanobench.o` but their Makefiles don't indicate it proper
 
 The experiments that need to drop the file cache need to be run with root permissions (`sudo`).
 
+Check each Makefile for the list of possible targets. They are very simple.
+
 # Project Overview
 Taken from the project description:
 > In building an operating system, it is important to be able to determine the performance characteristics of underlying hardware components (CPU, RAM, disk, network, etc.), and to understand how their performance influences or constrains operating system services. Likewise, in building an application, one should understand the performance of the underlying hardware and operating system, and how they relate to the user's subjective sense of that application's "responsiveness". While some of the relevant quantities can be found in specs and documentation, many must be determined experimentally. While some values may be used to predict others, the relations between lower-level and higher-level performance are often subtle and non-obvious.
