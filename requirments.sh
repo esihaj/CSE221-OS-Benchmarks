@@ -8,6 +8,9 @@ echo -e "${GREEN}current dir: $CURRENT_DIR ${NC}"
 
 sudo apt update
 sudo apt install -y htop git curl cpufrequtils wget curl g++ gcc tuned msr-tools zlib1g-dev cmake
+
+
+
 echo -e "${GREEN}setting up Hdr Histograms${NC}"
 cd ../
 wget "https://github.com/HdrHistogram/HdrHistogram_c/archive/refs/tags/0.11.6.zip"
