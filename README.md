@@ -2,6 +2,16 @@
 
 This is my repository for CSE-221 OS's project @ UCSD
 
+# How to run
+use `requirements.sh` to install all the required libraries. Tested on Ubuntu 22.04 (X86 Arch).
+Note that it will also try to tune the system.
+
+There are Makefiles in each directory: `filesystem`, `memory`, `network`, `procedure-overhead`, `time`.
+There is also a top level Makefile for top-level experiments: `nanobench.o` , `syscall`, `thread`, `context-switch`, `context-switch-thread`.
+Some experiments need `nanobench.o` but their Makefiles don't indicate it properly. Please make it first.
+
+The experiments that need to drop the file cache need to be run with root permissions (`sudo`).
+
 # Project Overview
 Taken from the project description:
 > In building an operating system, it is important to be able to determine the performance characteristics of underlying hardware components (CPU, RAM, disk, network, etc.), and to understand how their performance influences or constrains operating system services. Likewise, in building an application, one should understand the performance of the underlying hardware and operating system, and how they relate to the user's subjective sense of that application's "responsiveness". While some of the relevant quantities can be found in specs and documentation, many must be determined experimentally. While some values may be used to predict others, the relations between lower-level and higher-level performance are often subtle and non-obvious.

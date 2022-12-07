@@ -47,10 +47,9 @@ sudo ./turbo-boost.sh disable
 cpufreq-info | head -n 10
 
 
+#echo -e "${GREEN} zsh${NC}"
 
-echo -e "${GREEN} zsh${NC}"
-
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #taskset -c 5
 #https://www.glennklockwood.com/hpc-howtos/process-affinity.html#31-the-linux-portable-way-taskset
